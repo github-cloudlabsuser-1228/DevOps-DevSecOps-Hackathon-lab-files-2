@@ -1,11 +1,39 @@
+import React from "react";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import "./App.css";
 import WelcomePopup from "./components/WelcomePopup";
+import AboutUs from "./components/AboutUs";
+
 
 function App() {
   return (
     <>
+      <Router>
       <WelcomePopup />
       <header className="App-header">
+        <nav style={{ marginBottom: "20px" }}>
+          <Link to="/" style={{ marginRight: "10px", color: "#61dafb" }}>
+            Home
+          </Link>
+          <Link to="/about-us" style={{ color: "#61dafb" }}>
+            About Us
+          </Link>
+        </nav>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div>
+                <h1>Welcome to Contoso Traders</h1>
+                <p>
+                  Explore our platform and learn more about our DevSecOps
+                  practices.
+                </p>
+              </div>
+            }
+          />
+          <Route path="/about-us" element={<AboutUs />} />
+        </Routes>
         <div className="container">
           <h1 className="text-center mt-5 pb-4">
             DevOps/DevSecOps Challenge - Day 2 Hackathon
@@ -219,6 +247,7 @@ function App() {
           <p>Happy hacking!</p>
         </div>
       </header>
+      </Router>
     </>
   );
 }
